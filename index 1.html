@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Краткий фанатский гайд для новичков в Elden Ring: старт, классы, характеристики, маршрут и подготовка к Маргиту.">
+<meta name="theme-color" content="#11110f">
+<title>Elden Ring — Путь новичка</title>
+<style>
+:root{--bg:#11110f;--panel:#1b1b18;--panel2:#22221d;--gold:#d7b56d;--gold2:#f0d99a;--text:#f1eee6;--muted:#b6b0a2;--line:rgba(215,181,109,.28);--max:1160px;--radius:18px;--shadow:0 18px 50px rgba(0,0,0,.28)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.65}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.12;z-index:-1;background-image:radial-gradient(circle at 15% 15%,#76613a 0,transparent 30%),radial-gradient(circle at 85% 70%,#4c4a32 0,transparent 28%)}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--gold2);outline-offset:3px}
+.container{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(17,17,15,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(215,181,109,.15)}
+.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-size:.78rem;letter-spacing:.18em;font-weight:800;color:var(--gold2)}
+.brand-mark{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--gold);border-radius:50%;font-size:18px}
+.navlinks{display:flex;gap:22px;align-items:center;color:var(--muted);font-size:.9rem}
+.navlinks a:hover{color:var(--gold2)}
+.menu-toggle{display:none;background:transparent;border:1px solid var(--line);color:var(--text);padding:8px 12px;border-radius:10px}
+.hero{min-height:680px;display:grid;align-items:center;position:relative;isolation:isolate;overflow:hidden;border-bottom:1px solid var(--line);background:linear-gradient(90deg,rgba(12,12,10,.96) 0%,rgba(12,12,10,.76) 52%,rgba(12,12,10,.28) 100%),linear-gradient(0deg,var(--bg),transparent 38%),url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=2000&q=85') center 42%/cover}
+.hero:after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(ellipse at 72% 40%,rgba(209,171,83,.15),transparent 38%)}
+.hero-content{padding:90px 0 100px;max-width:760px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold2);font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:800}
+.eyebrow:before{content:"";width:34px;height:1px;background:var(--gold)}
+h1,h2,h3,p{margin-top:0}
+h1{font-size:clamp(2.6rem,7vw,5.6rem);line-height:.98;letter-spacing:-.055em;margin:22px 0 26px;max-width:820px}
+h1 span{display:block;color:var(--gold2);font-weight:500}
+.hero p{max-width:620px;color:#d0cbbf;font-size:clamp(1rem,2vw,1.2rem)}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 20px;border-radius:10px;border:1px solid var(--gold);font-weight:750;cursor:pointer;transition:transform .2s,background .2s,border-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--gold);color:#191710}
+.btn-primary:hover{background:var(--gold2)}
+.btn-secondary{background:rgba(20,20,17,.35);color:var(--text)}
+.btn-secondary:hover{background:rgba(215,181,109,.12)}
+.hero-note{margin-top:54px;color:#a9a393;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase}
+section{padding:88px 0}
+.section-head{max-width:720px;margin-bottom:36px}
+.section-kicker{color:var(--gold);font-size:.75rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.04em;margin:10px 0 14px}
+.section-head p{color:var(--muted);margin-bottom:0}
+.grid{display:grid;gap:16px}
+.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+.grid-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+.card{background:linear-gradient(145deg,rgba(35,35,29,.96),rgba(24,24,21,.96));border:1px solid var(--line);border-radius:var(--radius);padding:25px;box-shadow:var(--shadow)}
+.card-icon{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:13px;color:var(--gold2);font-size:1.35rem;margin-bottom:20px;background:rgba(215,181,109,.06)}
+.card h3{font-size:1.15rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.94rem;margin-bottom:0}
+.soft-section{background:linear-gradient(180deg,rgba(255,255,255,.018),transparent);border-block:1px solid rgba(255,255,255,.04)}
+.class-card{display:flex;flex-direction:column;min-height:300px}
+.class-label{font-size:.72rem;color:var(--gold);letter-spacing:.14em;text-transform:uppercase;font-weight:800}
+.class-card h3{font-size:1.55rem;margin:10px 0}
+.class-card .style{margin:18px 0 22px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:.83rem;color:#d5c69e}
+.class-card .btn{margin-top:auto;width:100%}
+.class-hint{margin-top:22px;text-align:center;color:var(--muted);font-size:.95rem}
+.class-hint a{color:var(--gold2);font-weight:700;text-decoration:underline;text-underline-offset:3px}
+.class-hint a:hover{color:var(--gold)}
+.prep-list{margin:16px 0 0;padding-left:20px;color:var(--muted);font-size:.93rem}
+.prep-list li{margin-bottom:10px}
+.prep-list strong{color:var(--text)}
+.notice{padding:20px 22px;border-left:3px solid var(--gold);background:rgba(215,181,109,.08);border-radius:0 12px 12px 0;color:#e9dfc6;margin-top:24px}
+.stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.stat{display:flex;gap:14px;padding:18px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:13px}
+.stat strong{display:block;margin-bottom:3px}
+.stat p{margin:0;color:var(--muted);font-size:.9rem}
+.stat .mini-icon{color:var(--gold);font-size:1.15rem;min-width:24px}
+.route{position:relative;display:grid;gap:14px}
+.route:before{content:"";position:absolute;left:22px;top:25px;bottom:25px;width:1px;background:var(--line)}
+.route-item{position:relative;display:grid;grid-template-columns:46px 1fr;gap:18px;align-items:start}
+.route-num{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#202019;border:1px solid var(--gold);color:var(--gold2);font-weight:800;z-index:1}
+.route-copy{padding:18px 20px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:rgba(255,255,255,.025)}
+.route-copy h3{margin:0 0 5px;font-size:1.05rem}
+.route-copy p{margin:0;color:var(--muted);font-size:.93rem}
+.boss-layout{display:grid;grid-template-columns:1fr .85fr;gap:22px;align-items:start}
+.checklist{display:grid;gap:10px;margin-top:20px}
+.checkrow{display:flex;align-items:flex-start;gap:12px;padding:12px 14px;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:11px;cursor:pointer}
+.checkrow input{width:18px;height:18px;margin-top:4px;accent-color:var(--gold);flex:0 0 auto}
+.checkrow span{color:#ddd7ca}
+.checkrow input:checked+span{color:#8f9883;text-decoration:line-through}
+.progress-wrap{height:5px;background:#34342b;border-radius:99px;margin-top:16px;overflow:hidden}
+.progress-bar{height:100%;width:0;background:var(--gold);transition:width .2s}
+.progress-text{font-size:.8rem;color:var(--muted);margin-top:8px}
+.tip-card{padding:18px 20px;display:flex;gap:15px;align-items:flex-start}
+.tip-number{font-size:1.2rem;color:var(--gold);font-weight:800;min-width:26px}
+.tip-card p{margin:0;color:var(--muted);font-size:.93rem}
+.tip-card strong{color:var(--text);display:block;margin-bottom:3px}
+.final-cta{padding:82px 0;text-align:center;background:linear-gradient(180deg,rgba(17,17,15,.75),rgba(17,17,15,.95)),url('https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=80') center/cover;border-top:1px solid var(--line)}
+.final-cta h2{max-width:760px;margin:14px auto}
+.final-cta p{max-width:620px;margin:0 auto;color:var(--muted)}
+.final-cta .actions{justify-content:center}
+footer{padding:26px 0;border-top:1px solid rgba(255,255,255,.08);color:#918d81;font-size:.82rem}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.toast{position:fixed;right:20px;bottom:20px;z-index:50;max-width:min(380px,calc(100% - 40px));padding:16px 18px;background:#25251f;border:1px solid var(--gold);border-radius:12px;box-shadow:var(--shadow);color:var(--text);opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .25s,transform .25s}
+.toast.show{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:none}
+.js-motion .reveal{opacity:0;transform:translateY(16px);transition:opacity .55s ease,transform .55s ease}
+.js-motion .reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.grid-4{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-3{grid-template-columns:repeat(2,minmax(0,1fr))}.boss-layout{grid-template-columns:1fr}.navlinks{gap:14px;font-size:.82rem}}
+@media(max-width:680px){.container{width:min(100% - 32px,var(--max))}.nav{min-height:64px}.menu-toggle{display:block}.navlinks{display:none;position:absolute;left:16px;right:16px;top:calc(100% + 8px);padding:14px;background:#1a1a16;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);align-items:stretch;flex-direction:column;gap:0}.navlinks.open{display:flex}.navlinks a{padding:12px;border-radius:8px}.navlinks a:hover{background:rgba(215,181,109,.08)}.hero{min-height:610px;background-position:58% center}.hero-content{padding:70px 0}.hero-note{margin-top:38px}.actions{flex-direction:column;align-items:stretch}.btn{width:100%}section{padding:64px 0}.grid-4,.grid-3,.stat-grid{grid-template-columns:1fr}.card{padding:22px}.class-card{min-height:0}.route-item{grid-template-columns:38px 1fr;gap:12px}.route-num{width:38px;height:38px}.route:before{left:18px}.route-copy{padding:16px}.footer-inner{display:block}.footer-inner span{display:block;margin-top:8px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.js-motion .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="Elden Ring — к началу"><span class="brand-mark" aria-hidden="true">✧</span><span>THE LANDS<br>BETWEEN</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">Меню ☰</button>
+    <nav class="navlinks" id="navLinks" aria-label="Основная навигация">
+      <a href="#start">Быстрый старт</a><a href="#classes">Классы</a><a href="#stats">Прокачка</a><a href="#route">Маршрут</a><a href="#margit">Маргит</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+<section class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow">Путеводитель по Междуземью</div>
+    <h1>ELDEN RING:<span>ПУТЬ НОВИЧКА</span></h1>
+    <p>Начни своё путешествие в Междуземье. Освой основы, подготовься к первым боссам и не потеряйся в открытом мире.</p>
+    <div class="actions"><a class="btn btn-primary" href="#start">Начать приключение <span aria-hidden="true">↓</span></a><a class="btn btn-secondary" href="#stats">Что качать</a></div>
+    <div class="hero-note">Исследуй · Учись · Стань Повелителем Элден</div>
+  </div>
+</section>
+
+<section id="start">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">01 / Основы</div><h2>Первые шаги в Междуземье</h2><p>Не спеши покорять всё сразу. Несколько простых привычек помогут увереннее освоиться в игре.</p></div>
+    <div class="grid grid-4">
+      <article class="card reveal"><div class="card-icon" aria-hidden="true">⚔</div><h3>Выбери класс</h3><p>Стартовый класс задаёт начальные характеристики и снаряжение, но не ограничивает дальнейшее развитие персонажа.</p></article>
+      <article class="card reveal"><div class="card-icon" aria-hidden="true">⌖</div><h3>Исследуй мир</h3><p>Активируй места благодати, открывай карту и проверяй пещеры, руины и тропы в поисках полезных предметов.</p></article>
+      <article class="card reveal"><div class="card-icon" aria-hidden="true">◈</div><h3>Освой бой</h3><p>Следи за выносливостью, учись уклоняться и блокировать, а затем атакуй в безопасные промежутки.</p></article>
+      <article class="card reveal"><div class="card-icon" aria-hidden="true">✦</div><h3>Не бойся ошибок</h3><p>Если враг слишком силён, отступи, исследуй другие места, найди снаряжение и вернись позже.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="soft-section" id="classes">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">02 / Стартовый класс</div><h2>Кем начать своё путешествие?</h2><p>Это три удобных для старта класса из десяти. Выбирай стиль, который тебе интересен — любой класс можно развивать по-своему.</p></div>
+    <div class="grid grid-3">
+      <article class="card class-card reveal"><div class="class-label">Ближний бой · Скорость</div><h3>Воин <span style="color:var(--muted);font-size:.8em">(Warrior)</span></h3><p>Ловкий боец с двумя изогнутыми клинками. Подходит для динамичного ближнего боя и быстрых серий атак.</p><div class="style">Стиль: мобильность и давление</div><button class="btn btn-secondary choose-class" data-class="Воин">Выбрать класс</button></article>
+      <article class="card class-card reveal" id="samurai"><div class="class-label">Универсальность · Катана</div><h3>Самурай <span style="color:var(--muted);font-size:.8em">(Samurai)</span></h3><p>Хороший выбор для сочетания ближнего боя катаной и дальних атак из лука.</p><div class="style">Стиль: точные удары и дистанция</div><button class="btn btn-secondary choose-class" data-class="Самурай">Выбрать класс</button></article>
+      <article class="card class-card reveal"><div class="class-label">Дальний бой · Магия</div><h3>Астролог <span style="color:var(--muted);font-size:.8em">(Astrologer)</span></h3><p>Персонаж для тех, кто хочет использовать колдовство и атаковать противников на расстоянии.</p><div class="style">Стиль: магические атаки и позиция</div><button class="btn btn-secondary choose-class" data-class="Астролог">Выбрать класс</button></article>
+    </div>
+    <p class="class-hint"><a href="#samurai">Не уверен? Берись за Самурая</a></p>
+  </div>
+</section>
+
+<section id="stats">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">03 / Развитие персонажа</div><h2>Что прокачивать в начале игры?</h2><p>Понимай, за что отвечает каждая характеристика, и вкладывай очки под свой стиль игры.</p></div>
+    <div class="stat-grid">
+      <div class="stat reveal"><div class="mini-icon">♥</div><div><strong>Жизненная сила (Vigor)</strong><p>Увеличивает запас здоровья и помогает переживать ошибки.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">ϟ</div><div><strong>Выносливость (Endurance)</strong><p>Повышает запас выносливости и допустимую нагрузку экипировки.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">⚒</div><div><strong>Сила (Strength)</strong><p>Нужна для использования подходящего тяжёлого оружия.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">➶</div><div><strong>Ловкость (Dexterity)</strong><p>Важна для оружия, которое масштабируется от ловкости.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">✧</div><div><strong>Интеллект (Intelligence)</strong><p>Необходим для многих видов колдовства.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">☼</div><div><strong>Вера (Faith)</strong><p>Используется для заклинаний веры.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">◇</div><div><strong>Тайная сила (Arcane)</strong><p>Влияет на некоторые эффекты оружия и поиск предметов.</p></div></div>
+      <div class="stat reveal"><div class="mini-icon">❖</div><div><strong>Сознание (Mind)</strong><p>Запас очков концентрации (ОК) для колдовства и молитв.</p></div></div>
+    </div>
+    <div class="notice reveal"><strong>Совет:</strong> в начале игры не распыляй очки на все характеристики. Сначала определись с оружием и желаемым стилем, а затем распределяй очки: развивай здоровье, поддерживай выживаемость и подбирай характеристики под своё оружие.</div>
+  </div>
+</section>
+
+<section class="soft-section" id="route">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">04 / Первые часы</div><h2>Куда идти в начале?</h2><p>Это рекомендуемый маршрут, а не обязательная последовательность: открытый мир позволяет исследовать и другие места.</p></div>
+    <div class="route">
+      <article class="route-item reveal"><div class="route-num">01</div><div class="route-copy"><h3>Первое место благодати</h3><p>Освой управление, попробуй основные атаки, уклонение и блокирование. Не обязательно побеждать каждого встречного врага.</p></div></article>
+      <article class="route-item reveal"><div class="route-num">02</div><div class="route-copy"><h3>Церковь Элле</h3><p>Найди торговца Кале и посмотри доступные предметы. Покупай то, что действительно пригодится твоему стилю игры.</p></div></article>
+      <article class="route-item reveal"><div class="route-num">03</div><div class="route-copy"><h3>Получение Потока</h3><p>Отдохни у места благодати — обычно в церкви Элле — и Мелина даст тебе Потока, призрачного коня. С ним быстрее исследовать мир и обходить опасные группы врагов.</p></div></article>
+      <article class="route-item reveal"><div class="route-num">04</div><div class="route-copy"><h3>Врата</h3><p>Активируй места благодати, изучи карту и следуй по Золотому пути, не забывая осматривать окрестности.</p></div></article>
+      <article class="route-item reveal"><div class="route-num">05</div><div class="route-copy"><h3>Третий храм Марики</h3><p>Исследуй окрестности, ищи полезные ресурсы и предметы, но учитывай, что некоторые враги могут оказаться слишком сильными.</p></div></article>
+      <article class="route-item reveal"><div class="route-num">06</div><div class="route-copy"><h3>Замок Грозовой Завесы</h3><p>Подготовься к встрече с Маргитом и постепенно продвигайся к первому крупному сюжетному испытанию.</p></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="margit">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">05 / Испытание</div><h2>Маргит, Ужасное Знамение</h2><p>Подготовка часто важнее попытки победить с первой минуты. Сделай бой управляемым.</p></div>
+    <div class="boss-layout">
+      <div class="card reveal">
+        <h3>Как подготовиться к бою</h3>
+        <p>Не торопись идти к боссу сразу после начала игры. Дополнительное исследование, несколько уровней и улучшение оружия могут заметно облегчить сражение.</p>
+        <p>Следи за полосой выносливости и не атакуй без остановки: оставляй запас на уклонение. Наблюдай за комбинациями Маргита и бей в моменты, когда он заканчивает серию атак.</p>
+        <p>Если доступны призыв духов и игровые помощники, используй их, чтобы получить передышку и дополнительные возможности для атаки.</p>
+        <ul class="prep-list">
+          <li><strong>Колокольчик призыва духов:</strong> вернись в церковь Элле ночью после получения Потока — Ренна даст колокольчик и пепел Одинокого волка.</li>
+          <li><strong>Нагрузка экипировки:</strong> держи вес ниже 70% от максимума, чтобы сохранить средний перекат.</li>
+          <li><strong>Улучшение оружия:</strong> трать кузнечные камни на основное оружие у кузнеца Хьюга в Круглом столе.</li>
+          <li><strong>Ориентир по силе:</strong> уровень ~20–25 и оружие +3 заметно упрощают бой.</li>
+        </ul>
+        <div class="notice"><strong>Кандалы Маргита:</strong> их продаёт Патч в пещере Грязной Воды после того, как он сдастся в бою (на половине здоровья) и откроет лавку. Предмет дважды прижимает Маргита к земле в первой фазе боя.</div>
+      </div>
+      <div class="card reveal">
+        <h3>Перед боем</h3>
+        <p style="color:var(--muted);font-size:.9rem">Отметь пункты по мере подготовки.</p>
+        <div class="checklist" id="checklist">
+          <label class="checkrow"><input type="checkbox"><span>Проверить запас здоровья</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Улучшить оружие, если доступны материалы</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Подготовить фляги</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Проверить нагрузку экипировки</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Изучить атаки босса</span></label>
+          <label class="checkrow"><input type="checkbox"><span>Оставлять выносливость для уклонения</span></label>
+        </div>
+        <div class="progress-wrap" aria-label="Прогресс подготовки"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-text" id="progressText" aria-live="polite">Готово: 0 из 6</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="soft-section" id="tips">
+  <div class="container">
+    <div class="section-head reveal"><div class="section-kicker">06 / На заметку</div><h2>7 советов, которые сэкономят время</h2><p>Небольшие привычки, которые помогают проходить игру спокойнее и увереннее.</p></div>
+    <div class="grid grid-3">
+      <article class="card tip-card reveal"><div class="tip-number">01</div><p><strong>Активируй благодати</strong>Они помогают ориентироваться и служат важными точками отдыха.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">02</div><p><strong>Проверяй боковые пути</strong>Пещеры и руины часто скрывают полезные предметы и ресурсы.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">03</div><p><strong>Планируй траты рун</strong>По возможности повышай уровень или покупай нужные предметы, а не копи без цели.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">04</div><p><strong>Следи за нагрузкой</strong>Вес экипировки влияет на тип переката и подвижность.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">05</div><p><strong>Улучшай оружие</strong>Подходящее улучшенное оружие часто полезнее небольшого повышения второстепенной характеристики.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">06</div><p><strong>Используй окружение</strong>Скрытность, конь и особенности местности могут дать преимущество.</p></article>
+      <article class="card tip-card reveal"><div class="tip-number">07</div><p><strong>Возвращайся позже</strong>Если противник слишком силён, исследуй другие области и набирайся опыта.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="container reveal"><div class="eyebrow">Твой путь начинается</div><h2>Твоё приключение начинается сейчас</h2><p>Междуземье не обещает лёгкого пути. Исследуй, учись на ошибках, находи собственный стиль и стань Повелителем Элден.</p><div class="actions"><a class="btn btn-primary" href="#top">Вернуться к началу ↑</a></div></div>
+</section>
+</main>
+<footer><div class="container footer-inner"><span>Фанатский гайд для игроков.</span><span>Elden Ring является собственностью правообладателей. Сайт не связан официально с разработчиками игры.</span></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+document.documentElement.classList.add('js-motion');
+const menuToggle=document.getElementById('menuToggle');
+const navLinks=document.getElementById('navLinks');
+menuToggle.addEventListener('click',()=>{
+  const open=navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded',String(open));
+  menuToggle.textContent=open?'Закрыть ✕':'Меню ☰';
+});
+navLinks.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{
+  navLinks.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded','false');
+  menuToggle.textContent='Меню ☰';
+}));
+let toastTimer;
+function showToast(message){
+  const toast=document.getElementById('toast');
+  toast.textContent=message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'),3800);
+}
+document.querySelectorAll('.choose-class').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const selected=button.dataset.class;
+    const messages={
+      'Воин':'Воин подойдёт, если тебе нравится быстрый ближний бой. Развивай выживаемость и характеристики выбранного оружия.',
+      'Самурай':'Самурай хорош для сочетания катаны и лука. Следи за выносливостью и подбирай улучшения под свой стиль.',
+      'Астролог':'Астролог подойдёт для боя на расстоянии. Следи за запасом ОК и не забывай о здоровье и безопасной позиции.'
+    };
+    showToast(messages[selected]);
+  });
+});
+const samuraiLink=document.querySelector('.class-hint a');
+if(samuraiLink){
+  samuraiLink.addEventListener('click',()=>{
+    showToast('Самурай хорош для сочетания катаны и лука. Следи за выносливостью и подбирай улучшения под свой стиль.');
+  });
+}
+const checks=[...document.querySelectorAll('#checklist input[type="checkbox"]')];
+const progressBar=document.getElementById('progressBar');
+const progressText=document.getElementById('progressText');
+function updateProgress(){
+  const count=checks.filter(input=>input.checked).length;
+  progressBar.style.width=(count/checks.length*100)+'%';
+  progressText.textContent=`Готово: ${count} из ${checks.length}`;
+}
+checks.forEach(input=>input.addEventListener('change',updateProgress));
+if('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+}
+</script>
+</body>
+</html>

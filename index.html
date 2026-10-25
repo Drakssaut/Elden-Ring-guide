@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Elden Ring: краткий гайд для новичка — классы, характеристики, маршрут и подготовка к Маргиту.">
+<title>Elden Ring: путь новичка — фанатский гайд</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0b0b0d;--panel:rgba(28,27,30,.78);--gold:#d4af37;--gold-d:#8a6d1c;--text:#ece6d6;--muted:#9a968c;--pad:clamp(16px,5vw,48px);--r:12px;--serif:'Cinzel',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--text);font:400 1.05rem/1.65 var(--sans);overflow-x:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+h1,h2,h3{font-family:var(--serif);line-height:1.2}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 var(--pad)}
+section{padding:clamp(56px,10vw,110px) 0}
+h2{font-size:clamp(1.6rem,5vw,2.6rem);color:var(--gold);text-align:center;margin-bottom:.4em}
+h2::after{content:"";display:block;width:90px;height:2px;margin:14px auto 0;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.lead{text-align:center;color:var(--muted);max-width:680px;margin:18px auto 36px}
+.grid{display:grid;gap:18px;grid-template-columns:1fr}
+.card{background:var(--panel);border:1px solid var(--gold-d);border-radius:var(--r);padding:24px;box-shadow:0 8px 28px rgba(0,0,0,.45);backdrop-filter:blur(4px);transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:var(--gold)}
+.card h3{font-size:1.2rem;color:var(--gold);margin-bottom:8px}
+.card p{color:#cfc9b8}
+.ico{width:44px;height:44px;margin-bottom:12px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:12px 28px;border-radius:8px;border:1px solid var(--gold);font:600 1rem var(--sans);letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:.25s}
+.btn-main{background:linear-gradient(135deg,#e6c55a,var(--gold-d));color:#16120a}
+.btn-main:hover{box-shadow:0 0 24px rgba(212,175,55,.5);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--gold)}
+.btn-ghost:hover{background:rgba(212,175,55,.12)}
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(11,11,13,.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(138,109,28,.5);padding-top:env(safe-area-inset-top)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:56px}
+.logo{font-family:var(--serif);color:var(--gold);letter-spacing:.2em;font-size:.85rem;text-decoration:none}
+#menuBtn{min-width:48px;min-height:48px;background:none;border:0;color:var(--gold);font-size:1.6rem;cursor:pointer}
+nav ul{list-style:none;padding:0;display:none;flex-direction:column;padding-bottom:12px}
+nav.open ul{display:flex}
+nav a{display:block;padding:12px 4px;text-decoration:none;color:var(--text)}
+nav a:hover{color:var(--gold)}
+/* hero */
+.hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;text-align:center;position:relative;padding:90px 0 60px;background:radial-gradient(ellipse at 50% 28%,rgba(212,175,55,.28),transparent 55%),radial-gradient(ellipse at 20% 90%,rgba(90,60,20,.35),transparent 50%),linear-gradient(180deg,#14120d,#0b0b0d 85%)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 120px,rgba(212,175,55,.035) 120px 121px);pointer-events:none}
+.tree{width:min(260px,60vw);margin:0 auto 18px;display:block;stroke:var(--gold);fill:none;stroke-width:1.5;opacity:.85;filter:drop-shadow(0 0 14px rgba(212,175,55,.5));animation:glow 4s ease-in-out infinite alternate}
+@keyframes glow{to{opacity:1;filter:drop-shadow(0 0 26px rgba(212,175,55,.8))}}
+.tag{font-family:var(--serif);letter-spacing:.35em;color:var(--gold);font-size:.8rem}
+.hero h1{font-size:clamp(2rem,8vw,4.6rem);margin:14px 0;text-shadow:0 0 30px rgba(212,175,55,.35)}
+.hero p{max-width:640px;margin:0 auto 30px;color:#cfc9b8}
+.cta{display:flex;flex-direction:column;gap:12px;align-items:stretch;max-width:340px;margin:0 auto}
+/* class */
+.msg{margin-top:24px;min-height:3.4em;padding:16px 20px;border-left:3px solid var(--gold);background:var(--panel);border-radius:6px;color:#e6dfc8}
+.card .btn{margin-top:16px;width:100%}
+.card.sel{border-color:var(--gold);box-shadow:0 0 26px rgba(212,175,55,.3)}
+.style{font-size:.9rem;color:var(--muted);margin-top:8px}
+/* stats */
+.stat strong{color:var(--gold);font-family:var(--serif)}
+.tip-box{margin-top:28px;padding:22px;border:1px solid var(--gold);border-radius:var(--r);background:linear-gradient(135deg,rgba(212,175,55,.16),rgba(28,27,30,.8));font-size:1.1rem;text-align:center}
+/* route */
+.route{list-style:none;padding:0;margin:0 auto;max-width:760px;position:relative;border-left:2px solid var(--gold-d);padding-left:28px}
+.route li{position:relative;margin-bottom:22px}
+.route li::before{content:attr(data-n);position:absolute;left:-47px;top:18px;width:32px;height:32px;border-radius:50%;background:var(--bg);border:2px solid var(--gold);color:var(--gold);display:grid;place-items:center;font:700 .9rem var(--serif)}
+.note{text-align:center;color:var(--muted);margin-top:20px;font-size:.95rem}
+/* margit */
+.two{display:grid;gap:22px;grid-template-columns:1fr}
+.two ul{padding-left:20px;color:#cfc9b8}
+.two li{margin-bottom:10px}
+.check{display:flex;align-items:center;gap:12px;min-height:48px;cursor:pointer;border-bottom:1px solid rgba(138,109,28,.3)}
+.check input{width:22px;height:22px;accent-color:var(--gold);flex:none}
+.check input:checked+span{color:var(--muted);text-decoration:line-through}
+.prog{margin-top:14px;color:var(--gold);font-weight:600}
+/* tips */
+.tips{counter-reset:t}
+.tips .card{padding:18px 18px 18px 64px;position:relative}
+.tips .card::before{counter-increment:t;content:counter(t);position:absolute;left:18px;top:14px;font:700 1.9rem var(--serif);color:var(--gold)}
+/* final */
+.final{text-align:center;background:radial-gradient(ellipse at 50% 100%,rgba(212,175,55,.22),transparent 60%),#0b0b0d}
+.final h2{font-size:clamp(1.8rem,6vw,3.2rem)}
+.final p{max-width:620px;margin:18px auto 30px;color:#cfc9b8}
+footer{padding:26px var(--pad);text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid rgba(138,109,28,.4)}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rev.in{opacity:1;transform:none}
+@media(min-width:640px){.grid.c2,.grid.c4,.grid.c3,.grid.c7,.two{grid-template-columns:repeat(2,1fr)}.cta{flex-direction:row;max-width:none;justify-content:center}}
+@media(min-width:960px){#menuBtn{display:none}nav ul{display:flex!important;flex-direction:row;gap:22px;padding:0}nav a{padding:0}.bar{height:64px}.grid.c4{grid-template-columns:repeat(4,1fr)}.grid.c3{grid-template-columns:repeat(3,1fr)}.grid.c7{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1.2fr 1fr}.bar nav{display:block}}
+@media(max-width:959px){nav{position:absolute;left:0;right:0;top:100%;background:rgba(11,11,13,.97);padding:0 var(--pad)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rev{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="wrap bar">
+  <a class="logo" href="#top">THE LANDS BETWEEN</a>
+  <button id="menuBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">☰</button>
+  <nav id="nav" aria-label="Основная навигация"><ul>
+   <li><a href="#start">Старт</a></li><li><a href="#classes">Классы</a></li><li><a href="#stats">Характеристики</a></li><li><a href="#route">Маршрут</a></li><li><a href="#margit">Маргит</a></li><li><a href="#tips">Советы</a></li>
+  </ul></nav>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-labelledby="h1">
+ <div class="wrap">
+  <svg class="tree" viewBox="0 0 200 200" aria-hidden="true"><path d="M100 190V90M100 130C70 120 55 100 40 70M100 110C130 100 150 80 160 50M100 90C90 60 80 40 60 20M100 90C110 60 125 40 140 22M100 150C80 150 60 160 45 175M100 150C120 150 140 160 158 172"/><circle cx="100" cy="90" r="4"/><circle cx="60" cy="20" r="3"/><circle cx="140" cy="22" r="3"/><circle cx="40" cy="70" r="3"/><circle cx="160" cy="50" r="3"/></svg>
+  <div class="tag">THE LANDS BETWEEN</div>
+  <h1 id="h1">ELDEN RING: ПУТЬ НОВИЧКА</h1>
+  <p>Начни своё путешествие в Междуземье. Освой основы, подготовься к первым боссам и не потеряйся в открытом мире</p>
+  <div class="cta"><a class="btn btn-main" href="#start">Начать приключение</a><a class="btn btn-ghost" href="#route">План прокачки</a></div>
+ </div>
+</section>
+
+<section id="start" aria-labelledby="h-start"><div class="wrap">
+ <h2 id="h-start">Первые шаги в Междуземье</h2>
+ <div class="grid c4">
+  <article class="card rev"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4l16 6v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/></svg><h3>Выбери класс</h3><p>Стартовый класс задаёт начальные характеристики и снаряжение, но не ограничивает дальнейшее развитие персонажа.</p></article>
+  <article class="card rev"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18"/><path d="M30 18l-4 12-8 0 4-12z"/></svg><h3>Исследуй мир</h3><p>Активируй места благодати, изучай карту, заглядывай в локации — там ждут полезные предметы.</p></article>
+  <article class="card rev"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38L38 10M30 10h8v8M14 30l4 4"/></svg><h3>Освой бой</h3><p>Уклоняйся, следи за выносливостью, блокируй и атакуй, когда у врага открывается окно.</p></article>
+  <article class="card rev"><svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 28a16 16 0 1 0 6-14M8 10v8h8"/></svg><h3>Не бойся поражений</h3><p>Можно вернуться позже: повысить уровень, найти снаряжение и попробовать другой подход.</p></article>
+ </div>
+</div></section>
+
+<section id="classes" aria-labelledby="h-cl"><div class="wrap">
+ <h2 id="h-cl">Кем начать своё путешествие?</h2>
+ <div class="grid c3">
+  <article class="card rev" data-class="warrior"><h3>Воин (Warrior)</h3><p>Ловкий боец с двумя изогнутыми клинками, подходящий для динамичного ближнего боя.</p><p class="style">Стиль: быстрый ближний бой</p><button class="btn btn-ghost pick" type="button" data-key="warrior">Выбрать класс</button></article>
+  <article class="card rev" data-class="samurai"><h3>Самурай (Samurai)</h3><p>Хороший выбор для сочетания ближнего боя, катаны и дальних атак из лука.</p><p class="style">Стиль: универсал</p><button class="btn btn-ghost pick" type="button" data-key="samurai">Выбрать класс</button></article>
+  <article class="card rev" data-class="astrologer"><h3>Астролог (Astrologer)</h3><p>Персонаж для тех, кто хочет использовать магию и атаковать на расстоянии.</p><p class="style">Стиль: колдун на дистанции</p><button class="btn btn-ghost pick" type="button" data-key="astrologer">Выбрать класс</button></article>
+ </div>
+ <div class="msg" id="classMsg" role="status" aria-live="polite">Выбери класс, чтобы увидеть рекомендацию.</div>
+</div></section>
+
+<section id="stats" aria-labelledby="h-st"><div class="wrap">
+ <h2 id="h-st">Что прокачивать в начале игры?</h2>
+ <div class="grid c7">
+  <article class="card stat rev"><h3>Жизненная сила (Vigor)</h3><p>Увеличивает запас здоровья.</p></article>
+  <article class="card stat rev"><h3>Выносливость (Endurance)</h3><p>Повышает запас выносливости и нагрузку экипировки.</p></article>
+  <article class="card stat rev"><h3>Сила (Strength)</h3><p>Нужна для использования подходящего тяжёлого оружия.</p></article>
+  <article class="card stat rev"><h3>Ловкость (Dexterity)</h3><p>Важна для оружия, масштабируемого от ловкости.</p></article>
+  <article class="card stat rev"><h3>Интеллект (Intelligence)</h3><p>Необходим для многих видов колдовства.</p></article>
+  <article class="card stat rev"><h3>Вера (Faith)</h3><p>Используется для заклинаний веры.</p></article>
+  <article class="card stat rev"><h3>Колдовство (Arcane)</h3><p>Влияет на некоторые эффекты оружия и поиск предметов.</p></article>
+ </div>
+ <div class="tip-box">В начале игры не распыляй очки на все характеристики. Развивай здоровье, поддерживай выживаемость и подбирай характеристики под своё оружие.</div>
+</div></section>
+
+<section id="route" aria-labelledby="h-rt"><div class="wrap">
+ <h2 id="h-rt">Куда идти в первые часы?</h2>
+ <ol class="route">
+  <li data-n="1" class="card rev"><h3>Первое место благодати</h3><p>Освой управление и изучи основы боя.</p></li>
+  <li data-n="2" class="card rev"><h3>Церковь Элле</h3><p>Найди торговца Кале и купи полезные предметы по мере необходимости.</p></li>
+  <li data-n="3" class="card rev"><h3>Врата</h3><p>Активируй доступные места благодати, изучи карту и продвигайся по Золотому пути.</p></li>
+  <li data-n="4" class="card rev"><h3>Получение Потока</h3><p>Продолжай исследование и получи возможность быстро передвигаться верхом.</p></li>
+  <li data-n="5" class="card rev"><h3>Третий храм Марики</h3><p>Исследуй окрестности, найди ресурсы и предметы, не забывая о рисках.</p></li>
+  <li data-n="6" class="card rev"><h3>Замок Грозовой Завесы</h3><p>Подготовься к встрече с Маргитом и постепенно продвигайся к первому крупному сюжетному испытанию.</p></li>
+ </ol>
+ <p class="note">Это рекомендуемый маршрут, а не обязательная последовательность: открытый мир позволяет исследовать другие места.</p>
+</div></section>
+
+<section id="margit" aria-labelledby="h-mg"><div class="wrap">
+ <h2 id="h-mg">Маргит, Ужасное Знамение: подготовка к боссу</h2>
+ <div class="two" style="margin-top:34px">
+  <div class="card rev"><ul>
+   <li>Не торопись сражаться с боссом сразу: без подготовки бой будет заметно тяжелее.</li>
+   <li>Повышение уровня, улучшение оружия и дополнительное исследование помогают пережить его атаки.</li>
+   <li>Следи за выносливостью и не атакуй без перерыва — оставляй запас на уклонение.</li>
+   <li>Призыв духов и другие игровые помощники могут облегчить сражение.</li>
+   <li>Кандалы Маргита ищи у торговца Патча в пещере Грязной Воды, если выполнены условия доступа к продаже.</li>
+  </ul></div>
+  <div class="card rev"><h3>Перед боем</h3>
+   <label class="check"><input type="checkbox"><span>Проверить уровень здоровья</span></label>
+   <label class="check"><input type="checkbox"><span>Улучшить оружие, если доступны материалы</span></label>
+   <label class="check"><input type="checkbox"><span>Подготовить фляги</span></label>
+   <label class="check"><input type="checkbox"><span>Проверить нагрузку экипировки</span></label>
+   <label class="check"><input type="checkbox"><span>Изучить атаки босса</span></label>
+   <label class="check"><input type="checkbox"><span>Не забывать об уклонении и моментах для контратаки</span></label>
+   <div class="prog" id="prog" role="status" aria-live="polite">Готово: 0 из 6</div>
+  </div>
+ </div>
+</div></section>
+
+<section id="tips" aria-labelledby="h-tp"><div class="wrap">
+ <h2 id="h-tp">7 советов, которые сэкономят тебе время</h2>
+ <div class="grid c3 tips" style="margin-top:34px">
+  <div class="card rev">Активируй встречающиеся места благодати.</div>
+  <div class="card rev">Исследуй боковые пещеры и руины.</div>
+  <div class="card rev">Не трать все руны бездумно — при возможности повышай уровень или покупай необходимые предметы.</div>
+  <div class="card rev">Следи за весом экипировки и типом переката.</div>
+  <div class="card rev">Улучшение подходящего оружия часто важнее небольшого повышения второстепенной характеристики.</div>
+  <div class="card rev">Используй скрытность, коня и окружение, когда это помогает.</div>
+  <div class="card rev">Если враг слишком силён, исследуй другие области и вернись позже.</div>
+ </div>
+</div></section>
+
+<section class="final" aria-labelledby="h-fn"><div class="wrap">
+ <h2 id="h-fn">Твоё приключение начинается сейчас</h2>
+ <p>Междуземье не обещает лёгкого пути. Исследуй, учись на ошибках, находи собственный стиль и стань Повелителем Элден.</p>
+ <button class="btn btn-main" type="button" id="toTop">Вернуться к началу</button>
+</div></section>
+</main>
+
+<footer>Фанатский гайд для игроков. Elden Ring является собственностью правообладателей. Сайт не связан официально с разработчиками игры.</footer>
+
+<script>
+(function(){
+ var nav=document.getElementById('nav'),btn=document.getElementById('menuBtn');
+ btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);btn.textContent=o?'✕':'☰';});
+ nav.addEventListener('click',function(e){if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');btn.textContent='☰';}});
+ document.getElementById('toTop').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+ var tips={
+  warrior:'Воин: вкладывай в Жизненную силу, Выносливость и Ловкость. Держи дистанцию, бей сериями и не забывай уклоняться.',
+  samurai:'Самурай: катана и лук дают гибкость. Расстреливай врагов издалека и добивай в ближнем бою; Жизненная сила и Ловкость — основа.',
+  astrologer:'Астролог: развивай Интеллект и Жизненную силу, держись на расстоянии и не забывай про запас маны. Ближний бой — только в крайнем случае.'
+ };
+ var msg=document.getElementById('classMsg');
+ document.querySelectorAll('.pick').forEach(function(b){b.addEventListener('click',function(){
+  document.querySelectorAll('[data-class]').forEach(function(c){c.classList.remove('sel');});
+  b.closest('.card').classList.add('sel');msg.textContent=tips[b.dataset.key];
+ });});
+ var boxes=document.querySelectorAll('.check input'),prog=document.getElementById('prog');
+ function upd(){var n=0;boxes.forEach(function(x){if(x.checked)n++;});prog.textContent='Готово: '+n+' из '+boxes.length+(n===boxes.length?' — удачи в бою!':'');}
+ boxes.forEach(function(x){x.addEventListener('change',upd);});
+ var els=document.querySelectorAll('.rev');
+ if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});els.forEach(function(el){io.observe(el);});}
+ else{els.forEach(function(el){el.classList.add('in');});}
+})();
+</script>
+</body>
+</html>
