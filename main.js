@@ -1,4 +1,37 @@
 document.documentElement.classList.add('js-motion');
+// Плавная прокрутка с кастомным ускорением (easeInOutCubic)
+function smoothScrollTo(targetY, duration = 1000) {
+  const startY = window.scrollY;
+  const diff = targetY - startY;
+  if (Math.abs(diff) < 1) return;
+  const startTime = performance.now();
+  const easeInOutCubic = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const step = now => {
+    const progress = Math.min((now - startTime) / duration, 1);
+    window.scrollTo({ top: startY + diff * easeInOutCubic(progress), behavior: 'instant' });
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+// Перехват кликов по якорным ссылкам для плавной прокрутки
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const hash = link.getAttribute('href');
+    if (hash.length < 2) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      target.scrollIntoView();
+      return;
+    }
+    const topbar = document.querySelector('.topbar');
+    const offset = topbar ? topbar.offsetHeight : 0;
+    const targetY = target.getBoundingClientRect().top + window.scrollY - offset;
+    smoothScrollTo(targetY, 1100);
+    history.replaceState(null, '', hash);
+  });
+});
 const menuToggle=document.getElementById('menuToggle');
 const navLinks=document.getElementById('navLinks');
 menuToggle.addEventListener('click',()=>{
