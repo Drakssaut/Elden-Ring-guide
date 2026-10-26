@@ -43,13 +43,11 @@
 
 <section class="soft-section" id="classes">
   <div class="container">
-    <div class="section-head reveal"><div class="section-kicker">02 / Стартовый класс</div><h2>Кем начать своё путешествие?</h2><p>Это три удобных для старта класса из десяти. Выбирай стиль, который тебе интересен — любой класс можно развивать по-своему.</p></div>
-    <div class="grid grid-3">
-      <article class="card class-card reveal"><div class="class-label">Ближний бой · Скорость</div><h3>Воин <span style="color:var(--muted);font-size:.8em">(Warrior)</span></h3><p>Ловкий боец с двумя изогнутыми клинками. Подходит для динамичного ближнего боя и быстрых серий атак.</p><div class="style">Стиль: мобильность и давление</div><button class="btn btn-secondary choose-class" data-class="Воин">Выбрать класс</button></article>
-      <article class="card class-card reveal" id="samurai"><div class="class-label">Универсальность · Катана</div><h3>Самурай <span style="color:var(--muted);font-size:.8em">(Samurai)</span></h3><p>Хороший выбор для сочетания ближнего боя катаной и дальних атак из лука.</p><div class="style">Стиль: точные удары и дистанция</div><button class="btn btn-secondary choose-class" data-class="Самурай">Выбрать класс</button></article>
-      <article class="card class-card reveal"><div class="class-label">Дальний бой · Магия</div><h3>Астролог <span style="color:var(--muted);font-size:.8em">(Astrologer)</span></h3><p>Персонаж для тех, кто хочет использовать колдовство и атаковать противников на расстоянии.</p><div class="style">Стиль: магические атаки и позиция</div><button class="btn btn-secondary choose-class" data-class="Астролог">Выбрать класс</button></article>
+    <div class="section-head reveal"><div class="section-kicker">02 / Стартовый класс</div><h2>Кем начать своё путешествие?</h2><p>Все 10 стартовых классов Elden Ring. Выбери стиль, который тебе интересен — любой класс можно развивать по-своему.</p></div>
+    <div class="class-grid" id="classGrid" role="group" aria-label="Стартовые классы"></div>
+    <div class="class-panel" id="classPanel" aria-live="polite" aria-atomic="true">
+      <p class="class-panel-hint">Выбери класс, чтобы увидеть плюсы, минусы и что качать.</p>
     </div>
-    <p class="class-hint"><a href="#samurai">Не уверен? Берись за Самурая</a></p>
   </div>
 </section>
 
@@ -87,6 +85,10 @@
 <section id="margit">
   <div class="container">
     <div class="section-head reveal"><div class="section-kicker">05 / Испытание</div><h2>Маргит, Ужасное Знамение</h2><p>Подготовка часто важнее попытки победить с первой минуты. Сделай бой управляемым.</p></div>
+    <figure class="boss-figure reveal">
+      <img src="assets/margit.webp" alt="Маргит, Ужасное Знамение — первый крупный босс Elden Ring, встречающий игрока у ворот Замка Грозовой Завесы" width="1200" height="675" loading="lazy" decoding="async">
+      <figcaption>Маргит, Ужасное Знамение (Margit, the Fell Omen)</figcaption>
+    </figure>
     <div class="boss-layout">
       <div class="card reveal">
         <h3>Как подготовиться к бою</h3>
@@ -139,7 +141,6 @@
 </section>
 </main>
 <footer><div class="container footer-inner"><span>Фанатский гайд для игроков.</span><span>Elden Ring является собственностью правообладателей. Сайт не связан официально с разработчиками игры.</span></div></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
 <script src="main.js"></script>
 </body>
 </html>
