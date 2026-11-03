@@ -2,7 +2,7 @@ name: Deploy static site
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -15,7 +15,19 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # Задание 1: проверка корректности HTML-разметки
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Validate HTML
+        run: npx --yes html-validate index.html
+
+  # Задание 2: сборка артефакта (только если проверка прошла)
   build:
+    needs: validate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -27,8 +39,9 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: .
+          path: '.'
 
+  # Задание 3: публикация
   deploy:
     needs: build
     runs-on: ubuntu-latest
