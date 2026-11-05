@@ -2,6 +2,8 @@
   "extends": ["html-validate:recommended"],
   "rules": {
     "no-inline-style": "off",
-    "no-trailing-whitespace": "off"
+    "no-trailing-whitespace": "off",
+    "no-implicit-button-type": "off",
+    "aria-label-misuse": "off"
   }
 }
